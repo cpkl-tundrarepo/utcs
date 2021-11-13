@@ -2,7 +2,7 @@ import os
 import json
 
 ignore_list = ["data.json", "markdown.md"]
-ignore_format = ["title", "json"]
+ignore_format = ["title", "json", "py"]
 image_format = ["jpg", "png", "jpeg"]
 
 def get_title(path):
@@ -63,3 +63,4 @@ def loop_through(directory, path):
     return this_object 
 
 loop_through('','.')
+print("finished, leaving...")
