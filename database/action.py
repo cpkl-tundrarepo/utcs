@@ -1,5 +1,6 @@
 import os
 import json
+import sys
 
 ignore_list = ["data.json", "markdown.md"]
 ignore_format = ["title", "json", "py"]
@@ -64,3 +65,4 @@ def loop_through(directory, path):
 
 loop_through('','.')
 print("finished, leaving...")
+sys.exit(1)
