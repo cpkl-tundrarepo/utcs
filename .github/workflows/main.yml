@@ -34,9 +34,13 @@ jobs:
           python action.py
           echo "abc"
           git config --local user.email "bells95@tundracorp.com"
+          echo "abc"
           git config --local user.name "bells95"
+          echo "abc"
           git add -A
+          echo "abc"
           git commit -am 'update' >/dev/null
+          echo "abc"
           git push
           echo "def"
           
