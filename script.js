@@ -88,7 +88,7 @@ function changeFocus(element) {
 
                         const image = document.createElement("img");
                         image.id = "display_image";
-                        image.src = './'+current_result+'/'+element.path.join('/');
+                        image.src = './database/'+current_result+'/'+element.path.join('/');
                         child.appendChild(image);
                         frame.appendChild(child);
                     }
