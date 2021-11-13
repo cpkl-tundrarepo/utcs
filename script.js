@@ -38,7 +38,7 @@ function changeFocus(element) {
     switch (element.type) {
         case "document":
         case "directory":
-            response = fetch('./'+current_result+'/'+element.path.join('/')+"/"+"markdown.md")
+            response = fetch('./database/'+current_result+'/'+element.path.join('/')+"/"+"markdown.md")
                 .catch((thing) => (console.log("ops!")))
                 .then((response) => {
                     if (response.ok) {
@@ -64,7 +64,7 @@ function changeFocus(element) {
                 });
             break;
         case "image":
-            response = fetch('./'+current_result+'/'+element.path.join('/'))
+            response = fetch('./database/'+current_result+'/'+element.path.join('/'))
                 .catch((thing) => (console.log("ops!")))
                 .then((response) => {
                     if (response.ok) {
@@ -200,7 +200,7 @@ function processFile(element, parent_path) {
 
 function createResponse(search_result) {
 
-    const response = fetch('./'+search_result+'/data.json')
+    const response = fetch('./database/'+search_result+'/data.json')
         .then(response => response.json())
         .then(json => {
             parsed = json;
