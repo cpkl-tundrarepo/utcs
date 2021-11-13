@@ -32,15 +32,16 @@ jobs:
           ls
           cd database
           python action.py
-          echo "abc"
+          cd ..
           git config --local user.email "bells95@tundracorp.com"
-          echo "abc"
           git config --local user.name "bells95"
-          echo "abc"
+          echo "Adding new files, if any"
           git add -A
-          echo "abc"
-          git commit -am 'Auto update'
-          echo "abc"
+          echo "Commiting"
+          if ! git diff-index --quiet HEAD; then
+            echo "Changes found"
+            git commit -am 'Auto update'
+          fi
+          echo "Pushing"
           git push
-          echo "def"
           
