@@ -50,9 +50,9 @@ function changeFocus(element) {
                     if (data) {
                         console.log(data);
                         if (active_item) {
-                            active_item.className = "item_title container";
+                            active_item.className = "container";
                         }
-                        element.item_title.className = "item_title container enabled";
+                        element.item_title.className = "container enabled";
                         active_item = element.item_title;
                         const old_child = document.getElementById("content_child");
                         if (old_child) { old_child.remove();}
@@ -77,9 +77,9 @@ function changeFocus(element) {
                         element.path[-1]
                         console.log(data);
                         if (active_item) {
-                            active_item.className = "item_title container";
+                            active_item.className = "container";
                         }
-                        element.item_title.className = "item_title container enabled";
+                        element.item_title.className = "container enabled";
                         active_item = element.item_title;
                         const old_child = document.getElementById("content_child");
                         if (old_child) { old_child.remove();}
@@ -87,7 +87,7 @@ function changeFocus(element) {
                         child.id = "content_child";
 
                         const image = document.createElement("img");
-                        image.className = "display_image";
+                        image.id = "display_image";
                         image.src = './'+current_result+'/'+element.path.join('/');
                         child.appendChild(image);
                         frame.appendChild(child);
@@ -130,6 +130,7 @@ function getTreeSelectDiv(element, vertical_div) {
                 const node_div = document.createElement("div");
                 node_div.className = "select_icon";
                 const image = document.createElement("img");
+                image.className = "icon";
                 image.src = "./arrow.png";
                 node_div.appendChild(image);
                 element.icondiv = node_div;
@@ -175,8 +176,10 @@ function processFile(element, parent_path) {
     if (node_div) { horizontal_div.appendChild(node_div); }
 
     const item_title = document.createElement("div");
-    item_title.className = "item_title container";
+    item_title.className = "container";
+    item_title.id = "item_title";
     const icon_div = document.createElement("img");
+    icon_div.className = "icon";
     changeIcon(element_value, icon_div);
     element_value.icon_div = icon_div;
     element_value.tree_select = node_div;
