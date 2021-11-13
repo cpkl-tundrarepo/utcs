@@ -65,4 +65,4 @@ def loop_through(directory, path):
 
 loop_through('','.')
 print("finished, leaving...")
-sys.exit(1)
+sys.exit(0)
