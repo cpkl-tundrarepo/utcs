@@ -29,11 +29,14 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - run: |
+          ls
           cd database
           python action.py
+          echo "abc"
           git config --local user.email "bells95@tundracorp.com"
           git config --local user.name "bells95"
           git add -A
-          git commit -m 'update' >/dev/null
+          git commit -am 'update' >/dev/null
           git push
+          echo "def"
           
