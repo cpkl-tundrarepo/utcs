@@ -8,12 +8,12 @@ function toggleTree(element) {
     changeIcon(element, element.icon_div);
 
     if (element.enabled) {
-        element.tree_select.children[0].src = "/arrow_toggle.png";
+        element.tree_select.children[0].src = "./arrow_toggle.png";
         for (const property in element.subelements) {
             element.subelements[property].div.className = "container vertical nested";
         }
     } else {
-        element.tree_select.children[0].src = "/arrow.png";
+        element.tree_select.children[0].src = "./arrow.png";
         for (const property in element.subelements) {
             element.subelements[property].div.className = "container vertical nested disabled";
         }
@@ -38,7 +38,7 @@ function changeFocus(element) {
     switch (element.type) {
         case "document":
         case "directory":
-            response = fetch('/'+current_result+'/'+element.path.join('/')+"/"+"markdown.md")
+            response = fetch('./'+current_result+'/'+element.path.join('/')+"/"+"markdown.md")
                 .catch((thing) => (console.log("ops!")))
                 .then((response) => {
                     if (response.ok) {
@@ -64,7 +64,7 @@ function changeFocus(element) {
                 });
             break;
         case "image":
-            response = fetch('/'+current_result+'/'+element.path.join('/'))
+            response = fetch('./'+current_result+'/'+element.path.join('/'))
                 .catch((thing) => (console.log("ops!")))
                 .then((response) => {
                     if (response.ok) {
@@ -88,7 +88,7 @@ function changeFocus(element) {
 
                         const image = document.createElement("img");
                         image.className = "display_image";
-                        image.src = '/'+current_result+'/'+element.path.join('/');
+                        image.src = './'+current_result+'/'+element.path.join('/');
                         child.appendChild(image);
                         frame.appendChild(child);
                     }
@@ -103,19 +103,19 @@ function changeIcon(element, icon) {
     switch (element.type) {
         case "directory":
             if (element.enabled) {
-                icon.src = "/open_folder.png";
+                icon.src = "./open_folder.png";
             } else {
-                icon.src = "/closed_folder.png";
+                icon.src = "./closed_folder.png";
             }
             return icon;
         case "document":
-            icon.src = "/document.png";
+            icon.src = "./document.png";
             break;
         case "image":
-            icon.src = "/image.png";
+            icon.src = "./image.png";
             break;
         default:
-            icon.src = "/file.png";
+            icon.src = "./file.png";
     }
 }
             
@@ -130,7 +130,7 @@ function getTreeSelectDiv(element, vertical_div) {
                 const node_div = document.createElement("div");
                 node_div.className = "select_icon";
                 const image = document.createElement("img");
-                image.src = "/arrow.png";
+                image.src = "./arrow.png";
                 node_div.appendChild(image);
                 element.icondiv = node_div;
                 node_div.addEventListener('click', function(){
@@ -197,7 +197,7 @@ function processFile(element, parent_path) {
 
 function createResponse(search_result) {
 
-    const response = fetch('/'+search_result+'/data.json')
+    const response = fetch('./'+search_result+'/data.json')
         .then(response => response.json())
         .then(json => {
             parsed = json;
