@@ -1,0 +1,14 @@
+{
+    "subelements": {
+        "workflows": {
+            "subelements": {
+                "main.yml": {
+                    "title": "main.yml", 
+                    "type": "file"
+                }
+            }, 
+            "title": "workflows", 
+            "type": "directory"
+        }
+    }
+}
