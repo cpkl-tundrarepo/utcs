@@ -1,0 +1,27 @@
+{
+    "subelements": {
+        "1842": {
+            "subelements": {
+                "markdown.md": {
+                    "type": "file"
+                }
+            },
+            "type": "directory"
+        },
+        "history": {
+            "subelements": {
+                "history.db": {
+                    "type": "file"
+                },
+                "test": {
+                    "subelements": {},
+                    "type": "directory"
+                }
+            },
+            "type": "directory"
+        },
+        "test.json": {
+            "type": "file"
+        }
+    }
+}

@@ -1,0 +1,147 @@
+html {
+    height: 100%;
+    background-color: #1c1c1c;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.square {
+    margin: 10px;
+    padding: 20px;
+    background-color: #373737;
+    border: 1mm #373737;
+    border-radius: 4mm;
+    flex: 1;
+}
+
+#tree {
+    max-width: 30em;
+}
+
+#content {
+    overflow:auto;
+}
+
+.select_icon {
+    margin-right: 3px;
+    cursor: pointer;
+    display: flex;
+}
+
+.content {
+    display: flex;
+    height: 100%;
+    color: white;
+    font-family: "Jost",sans-serif;
+    width: 100%;
+    max-width: 90em;
+}
+
+.main_frame {
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+}
+
+.item {
+    margin-bottom: 10px;
+}
+
+.margin {
+    margin: 10px;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.horizontal {
+    flex-direction: row;
+}
+
+.nested {
+    margin-left: 17px;
+}
+
+.top_bar {
+    background-color: #202020;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,0.7675);
+    width: 100%;
+    font-family: "Jost",sans-serif;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.spacing {
+    flex: 1;
+}
+
+.search_id {
+    margin: 10px;
+}
+
+.disabled {
+    display: none;
+}
+
+.item_title {
+    width: 60%;
+    height: 100%;
+    border: #282828 2px solid;
+    color: white;
+    font-family: "Jost",sans-serif;
+    background-color: #282828;
+    padding: 3px;
+    border-radius: 6px;
+}
+
+.item_title:hover {
+    background-color: #222;
+    border: #222 2px solid;
+    transition: background-color 100ms linear;
+}
+
+.item_title.enabled {
+    background-color: #1818;
+    border: #1818 2px solid;
+    transition: background-color 100ms linear;
+}
+
+.overflow_text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.icon {
+    margin-right: 3px;
+}
+
+.super {
+    vertical-align: super;
+    font-size: 0.8rem;
+}
+
+.display_image {
+    max-width:100%;
+    max-height:100%;
+}
+
+
+img {
+    object-fit: none;
+}
