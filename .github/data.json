@@ -3,11 +3,11 @@
         "workflows": {
             "subelements": {
                 "main.yml": {
-                    "title": "main.yml", 
+                    "title": "main.yml",
                     "type": "file"
                 }
-            }, 
-            "title": "workflows", 
+            },
+            "title": "workflows",
             "type": "directory"
         }
     }

@@ -3,25 +3,25 @@
         "1842": {
             "subelements": {
                 "1.jpg": {
-                    "title": "Expedition 191.1842-1\n", 
+                    "title": "Expedition 191.1842-1\n",
                     "type": "image"
-                }, 
+                },
                 "2.jpg": {
-                    "title": "Expedition 191.1842-2\n", 
+                    "title": "Expedition 191.1842-2\n",
                     "type": "image"
                 }
-            }, 
-            "title": "SLM.1842 Site \n", 
+            },
+            "title": "SLM.1842 Site \n",
             "type": "document"
-        }, 
+        },
         "1843": {
             "subelements": {
                 "nuclear-photo.jpg": {
-                    "title": "Expedition 191.1843-1\n", 
+                    "title": "Expedition 191.1843-1\n",
                     "type": "image"
                 }
-            }, 
-            "title": "SLM.1843 Site\n", 
+            },
+            "title": "SLM.1843 Site\n",
             "type": "document"
         }
     }
