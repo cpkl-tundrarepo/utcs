@@ -39,7 +39,7 @@ jobs:
           echo "abc"
           git add -A
           echo "abc"
-          git commit -am 'update' >/dev/null
+          git commit -am 'Auto update'
           echo "abc"
           git push
           echo "def"
