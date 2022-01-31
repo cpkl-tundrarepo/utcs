@@ -107,6 +107,10 @@ body {
     margin: 5px;
 }
 
+#files {
+    margin-top: 10px;
+}
+
 .spacing {
     flex: 1;
 }
