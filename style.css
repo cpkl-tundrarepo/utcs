@@ -32,7 +32,7 @@ body {
     margin: 0px;
     margin-top: 5px;
     padding: 5px;
-    max-width: 30em;
+    /*max-width: 30em;*/
     background-color: #101010;
 }
 
@@ -52,7 +52,7 @@ body {
     color: white;
     font-family: "Jost",sans-serif;
     width: 100%;
-    max-width: 90em;
+    /*max-width: 90em;*/
 }
 
 .main_frame {
