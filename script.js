@@ -48,7 +48,6 @@ function changeFocus(element) {
                     }})
                 .then((data) => {
                     if (data) {
-                        console.log(data);
                         if (active_item) {
                             active_item.className = "container";
                         }
@@ -75,7 +74,6 @@ function changeFocus(element) {
                 .then((data) => {
                     if (data) {
                         element.path[-1]
-                        console.log(data);
                         if (active_item) {
                             active_item.className = "container";
                         }
@@ -146,6 +144,9 @@ function getTreeSelectDiv(element, vertical_div) {
 }
 
 function processFile(element, parent_path) {
+
+    let count = 1;
+
     const element_path = [...parent_path];
     element_path.push(element);
     const element_value = traverse(element_path);
@@ -165,6 +166,12 @@ function processFile(element, parent_path) {
             const processedElement = processFile(property, element_value.path);
             const processedDiv = processedElement[0];
             const processedElementActual = processedElement[1];
+            console.log("checking how many elements in "+processedDiv.textContent);
+            console.log(processedElement[2]);
+            console.log(count);
+            count+=processedElement[2];
+            console.log(count);
+            console.log("finished");
             processedDiv.className = "container vertical nested disabled";
             processedElementActual.enabled = false;
             processedElementActual.div = processedDiv;
@@ -172,6 +179,8 @@ function processFile(element, parent_path) {
 
         }
     }
+
+    console.log("after checking all, count is "+count);
 
     if (node_div) { horizontal_div.appendChild(node_div); }
 
@@ -195,7 +204,7 @@ function processFile(element, parent_path) {
 
     horizontal_div.appendChild(item_title);
 
-    return [vertical_div, element_value];
+    return [vertical_div, element_value, count];
 }
 
 function createResponse(search_result) {
@@ -213,10 +222,18 @@ function createResponse(search_result) {
             const query_result = document.createElement("div");
             query_result.className = "main_frame";
             query_result.id = "query_result";
+            let count = 0;
             for (const property in parsed.subelements) {
                 const output = processFile(property, []);
+                count += output[2];
                 query_result.appendChild(output[0]);
                 parsed.enabled = false;
+            }
+            const files_loaded = document.getElementById("files");
+            if (count != 1 ) {
+                files_loaded.textContent = count+" files loaded";
+            } else {
+                files_loaded.textContent = count+" file loaded";
             }
             tree.appendChild(query_result);
         });
@@ -229,7 +246,6 @@ window.addEventListener('load', (event) => {
             var valid = true;
             for (let i = 0; i < search_id.value.length; i++) {
                 if (!id_format.includes(search_id.value.charAt(i))) {
-                    console.log("OPA!");
                     valid = false;
                     break;
                 }

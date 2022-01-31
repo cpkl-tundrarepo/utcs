@@ -122,6 +122,10 @@ body {
 
 #search_id {
     margin-top: 5px;
+    background-color: #69737d;
+    border: 2px solid black;
+    padding: 3px;
+    border-radius: 6px;
 }
 
 .disabled {
