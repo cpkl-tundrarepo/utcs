@@ -113,8 +113,15 @@ function changeIcon(element, icon) {
             icon.src = "./image.png";
             break;
         default:
-            icon.src = "./file.png";
-    }
+            response = fetch("./"+element.type+".png")
+                .catch((thing) => (icon.src = "./file.png"))
+                .then((response) => {
+                    if (response.ok) {
+                        icon.src = "./"+element.type+".png";
+                    } else {
+                        icon.src = "./file.png";
+                    }})
+                }
 }
             
 
