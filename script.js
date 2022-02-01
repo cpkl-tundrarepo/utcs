@@ -36,6 +36,7 @@ function changeFocus(element) {
     const frame = document.getElementById("content");
     let response;
     switch (element.type) {
+        default:
         case "document":
         case "directory":
             response = fetch('./database/'+current_result+'/'+element.path.join('/')+"/"+"markdown.md")
