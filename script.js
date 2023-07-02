@@ -265,3 +265,18 @@ window.addEventListener('load', (event) => {
         }
     });
 });
+
+
+
+// LOGIN FUNCTIONS
+
+
+window.onload(function() {
+    const toggleEye = document.querySelector(".form-row-inner-password > span")
+    const body = document.querySelector("body")
+    
+    body.addEventListener("click", (e) => {
+        alert("wotking")
+    })
+
+})

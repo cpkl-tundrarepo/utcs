@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
 html {
     height: 100%;
     background-color: #272b2d;
@@ -178,3 +180,87 @@ body {
 .icon {
     object-fit: none;
 }
+
+
+
+/* FAKE FORM STYLING */
+
+/* FONT FAMILY FOR THE LOGIN SECTION */
+/* font-family: 'Courier Prime', monospace; */
+
+.wrapper {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 4rem;
+    
+}
+
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.form-row > input {
+    padding: 10px;
+    font-family: 'Courier Prime', monospace;
+}
+
+.form-row > input:focus {
+    outline: 1px solid orange;
+}
+
+.form-row > label {
+    color: white;
+    margin-bottom: .6rem;
+    text-shadow: 3px 3px 4px rgba(0,0,0,1);
+}
+
+.form-row-inner-password {
+    position: relative;
+    /* width: 100%; */
+    background-color: white;
+}
+
+/* .form-row-inner-password > input {
+    float: left;
+} */
+
+.form-row-inner-password > span {
+    z-index: 990;
+    background-color: red;
+    float: right;
+    cursor: pointer;
+    
+}
+
+.password {
+    /* width: 100%; */
+    position: absolute;
+    border: 0;
+    /* top: 0; */
+    /* z-index: 0; */
+    /* left: 10px; */
+    /* right: 0; */
+    /* float: right; */
+}
+
+.password:focus {
+    outline: 0;
+}
+
+.submit-row {
+    width: 100%;
+    text-align: center;
+}
+
+.submit-button {
+    background: rgb(68,206,103);
+    background: linear-gradient(0deg, rgba(68,206,103,1) 31%, rgba(152,219,189,1) 100%);
+    color: green;
+    padding: .6rem .8rem;
+    border-radius: 7px;
+    box-shadow: 6px 8px 6px -3px rgba(0,0,0,0.75);
+
+    cursor: pointer;
+} 
