@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="stylesheet" href="style.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -27,46 +29,53 @@
 
 
             <!--  ############### LOGIN PAGE #################### -->
-            <div class="wrapper">
+            <div class="login-wrapper">
+                <div class="wrapper">
 
-                <form>
-                    <div class="form-row">
-                        <label for="email">Email</label>
-                        <input type="text" id="email" name="email" autocomplete="off" class="email" >
-                    </div>
-
-                    <div class="form-row">
-                        <label for="password">Password</label>
-                        
-                        <div class="form-row-inner-password">
-                            <input type="password" id="password" name="password" class="password">
+                    <form>
+                        <div class="form-row">
+                            <label for="email">Email</label>
+                            <input type="text" id="email" name="email" autocomplete="off" class="email" >
+                        </div>
+    
+                        <div class="form-row">
+                            <label for="password">Password</label>
+                            
+                            <div class="form-row-inner-password">
+                                <input type="password" id="password" name="password" class="password">
+                            </div>
+                            
+                        </div>
+    
+                        <div class="show-password-section">
+                            <input type="checkbox" class="show-password">
+                            <p>Show Password?</p>
+                        </div>
+    
+                        <div class="error-message-wrapper">
+                            
                         </div>
                         
-                    </div>
-
-                    <div class="show-password-section">
-                        <input type="checkbox" class="show-password">
-                        <p>Show Password?</p>
+                        <div class="submit-row">
+                            <input type="submit" value="Sign In" class="submit-button">
+                        </div>
+                    </form>
+    
+                </div>
+    
+                <footer>
+                    <div class="footer-inner">
+                        <p>Thinker Archive Communication Agency® All rights reserved.</p>
+                        <br>
+                        <p>ELETRONIC DATABASE ACCESS | 1999, 2012.</p>
                     </div>
                     
-                    <div class="submit-row">
-                        <input type="submit" value="Sign In" class="submit-button">
-                    </div>
-                </form>
-
+    
+                </footer>
+    
             </div>
 
-            <footer>
-                <div class="footer-inner">
-                    <p>Thinker Archive Communication Agency® All rights reserved.</p>
-                    <br>
-                    <p>ELETRONIC DATABASE ACCESS | 1999, 2012.</p>
-                </div>
-                
-
-            </footer>
-
-            <!-- <div class="content">
+            <div class="content hidden">
                 
                 <div class="square vertical" id="leftthing">
                     <div class ="box vertical">
@@ -92,7 +101,7 @@
                         Empty, just like your soul.
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </body>
 </html>

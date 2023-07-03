@@ -302,6 +302,87 @@ checkboxPassword.addEventListener("click", (e) => {
 })
 
 
+const correctLogins = [
+    {
+        email: 'bells95@scicpkl.inc.us',
+        password: 'feynman@sWxw8Ml'
+    },
+    {
+        email: 'johndoe@email.com',
+        password: 'password123'
+    },
+    {
+        email: 'marysmith@gmail.com',
+        password: 'mj123'
+    }
+]
+// if email typed === correctLogins[i].email && pass
+
+for (let i = 0; i < correctLogins.length; i++) {
+    console.log(correctLogins[i].email)
+}
+
+
+const errorMessageLocation = document.querySelector(".error-message-wrapper")
+
+
+
+function validate_form(email, password, dict) {
+
+    let foundData = false;
+
+    for (let i = 0; i < dict.length; i++) {
+        if (email.value === dict[i].email && password.value === dict[i].password) {
+            foundData = true
+        }
+    }
+
+    if (!foundData) {
+        generateErrorMessage("Your credentials do not match our current employee database.  Make sure your email and password are both correct and try again.", "If the problem persists, contact your department's employee assistance center and request a new TACY access password.")
+    }
+    else {
+        console.log("Access Granted")
+        renderMainContent()
+    }
+}
+
+
+function generateErrorMessage(firstMessage, secondMessage) {
+    const div = document.createElement('div')
+    div.classList.add('message')
+    errorMessageLocation.appendChild(div)
+
+    const p1 = document.createElement("p")
+    p1.innerHTML = firstMessage
+
+    const p2 = document.createElement("p")
+    p2.innerHTML = secondMessage
+
+    div.appendChild(p1)
+    div.appendChild(p2)
+
+
+}
+
+
+function renderMainContent() {
+    const loginContent = document.querySelector(".login-wrapper")
+    loginContent.style.display = "none"
+
+    const mainContent = document.querySelector(".content")
+
+    mainContent.classList.add("active")
+}
+
+
+submitButton.addEventListener("click", function(e) {
+    e.preventDefault()
+    validate_form(emailInput, passwordInput, correctLogins)
+    
+})
+
+
+
 icon.addEventListener("click", (e) => {
     if (icon.innerHTML === "visibility" && passwordInput.type === "password") {
         icon.innerHTML = "visibility_off"
@@ -319,30 +400,6 @@ icon.addEventListener("click", (e) => {
 
 
 // let correctEmails = ['bells95@scicpkl.inc.us', 'johndoe@email.com']
-// let correctPasswords = ['feynman@sWxw8Ml', 'password1234']
+// let correctPasswords = ['feynman@sWxw8Ml', 'password1234'
 
-// const correctLogins = [
-//     {
-//         email: 'bells95@scicpkl.inc.us',
-//         password: 'feynman@sWxw8Ml'
-//     },
-//     {
-//         email: 'johndoe@email.com',
-//         password: 'password123'
-//     }
-// ]
-
-
-
-submitButton.addEventListener("click", function(e) {
-    e.preventDefault()
-
-    if (!emailInput.value || !passwordInput.value) {
-        console.log("something is wrong")
-    }
-    else {
-        console.log("....")
-    }
-    
-})
 
