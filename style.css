@@ -157,10 +157,11 @@ body {
     transition: background-color 100ms linear;
 }
 
-.overflow_text {
-    /*text-overflow: ellipsis;
-    overflow: hidden;*/
+/* .overflow_text {
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
+*/
 
 .icon {
     margin-right: 3px;
@@ -194,16 +195,20 @@ body {
     
 }
 
-
 .form-row {
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
 }
 
-.form-row > input {
+.form-row > input[type=text] {
     padding: 10px;
     font-family: 'Courier Prime', monospace;
+}
+
+/* !!! caution, fixed width */
+.form-row > input {
+    width: 400px;
 }
 
 .form-row > input:focus {
@@ -216,38 +221,41 @@ body {
     text-shadow: 3px 3px 4px rgba(0,0,0,1);
 }
 
+
 .form-row-inner-password {
-    position: relative;
-    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row-inner-password > input {
+    font-family: 'Courier Prime', monospace;
+    background-color: white;
+    width: 100%;
+    padding: 10px;
+}
+
+
+.show-password-section {
+    display: flex;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.show-password-section > p {
+    margin-left: 10px;
+    font-style: italic;
+}
+
+.toggle-image {
+    padding: 10px;
+    border: transparent;
     background-color: white;
 }
 
-/* .form-row-inner-password > input {
-    float: left;
-} */
-
-.form-row-inner-password > span {
-    z-index: 990;
-    background-color: red;
-    float: right;
-    cursor: pointer;
-    
+.form-row-inner-password > input:focus {
+    outline: 1px solid orange;
 }
 
-.password {
-    /* width: 100%; */
-    position: absolute;
-    border: 0;
-    /* top: 0; */
-    /* z-index: 0; */
-    /* left: 10px; */
-    /* right: 0; */
-    /* float: right; */
-}
-
-.password:focus {
-    outline: 0;
-}
 
 .submit-row {
     width: 100%;
@@ -264,3 +272,20 @@ body {
 
     cursor: pointer;
 } 
+
+
+footer {
+    display: flex;
+    align-items: end;
+    min-height: 35vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: .85rem;
+
+}
+
+footer > .footer-inner {
+    text-align: center;
+    margin-top: 5rem;
+    color: #5e6569;
+    
+}

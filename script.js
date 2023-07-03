@@ -271,12 +271,78 @@ window.addEventListener('load', (event) => {
 // LOGIN FUNCTIONS
 
 
-window.onload(function() {
-    const toggleEye = document.querySelector(".form-row-inner-password > span")
-    const body = document.querySelector("body")
+// window.onload(function() {
+    // const toggleEye = document.querySelector(".form-row-inner-password > span")
+    // const body = document.querySelector("body")
     
-    body.addEventListener("click", (e) => {
-        alert("wotking")
-    })
+    // body.addEventListener("click", (e) => {
+    //     alert("wotking")
+    // })
 
+// })
+
+
+
+
+const icon = document.querySelector(".toggle-image")
+const passwordInput = document.querySelector(".password")
+const checkboxPassword = document.querySelector(".show-password")
+const emailInput = document.querySelector(".email");
+const submitButton = document.querySelector(".submit-button")
+
+
+
+checkboxPassword.addEventListener("click", (e) => {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text"
+    }
+    else {
+        passwordInput.type = "password"
+    }
 })
+
+
+icon.addEventListener("click", (e) => {
+    if (icon.innerHTML === "visibility" && passwordInput.type === "password") {
+        icon.innerHTML = "visibility_off"
+        icon.style.opacity = 0.5
+    }
+    else {
+        passwordInput.type = "password"
+        icon.style.opacity = 1
+        icon.innerHTML = "visibility"
+    }
+})
+
+
+
+
+
+// let correctEmails = ['bells95@scicpkl.inc.us', 'johndoe@email.com']
+// let correctPasswords = ['feynman@sWxw8Ml', 'password1234']
+
+// const correctLogins = [
+//     {
+//         email: 'bells95@scicpkl.inc.us',
+//         password: 'feynman@sWxw8Ml'
+//     },
+//     {
+//         email: 'johndoe@email.com',
+//         password: 'password123'
+//     }
+// ]
+
+
+
+submitButton.addEventListener("click", function(e) {
+    e.preventDefault()
+
+    if (!emailInput.value || !passwordInput.value) {
+        console.log("something is wrong")
+    }
+    else {
+        console.log("....")
+    }
+    
+})
+
