@@ -365,6 +365,21 @@ function generateErrorMessage(firstMessage, secondMessage) {
 }
 
 
+
+
+function loadMousePointer() {
+    const body = document.querySelector("body");
+
+    body.style.cursor = "wait";
+
+    setTimeout(function() {
+        body.style.cursor = "default";
+    }, 5000);
+}
+
+loadMousePointer()
+
+
 function renderMainContent() {
     const loginContent = document.querySelector(".login-wrapper")
     loginContent.style.display = "none"
