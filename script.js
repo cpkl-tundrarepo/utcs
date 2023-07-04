@@ -271,35 +271,12 @@ window.addEventListener('load', (event) => {
 // LOGIN FUNCTIONS
 
 
-// window.onload(function() {
-    // const toggleEye = document.querySelector(".form-row-inner-password > span")
-    // const body = document.querySelector("body")
-    
-    // body.addEventListener("click", (e) => {
-    //     alert("wotking")
-    // })
-
-// })
-
-
-
 
 const icon = document.querySelector(".toggle-image")
 const passwordInput = document.querySelector(".password")
 const checkboxPassword = document.querySelector(".show-password")
 const emailInput = document.querySelector(".email");
 const submitButton = document.querySelector(".submit-button")
-
-
-
-checkboxPassword.addEventListener("click", (e) => {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text"
-    }
-    else {
-        passwordInput.type = "password"
-    }
-})
 
 
 const correctLogins = [
@@ -312,14 +289,23 @@ const correctLogins = [
         password: 'password123'
     },
     {
-        email: 'marysmith@gmail.com',
-        password: 'mj123'
+        email: 'kudy',
+        password: '123'
     }
 ]
-// if email typed === correctLogins[i].email && pass
 
-for (let i = 0; i < correctLogins.length; i++) {
-    console.log(correctLogins[i].email)
+
+// events
+checkboxPassword.addEventListener("click", showPasswordOnCheckbox)
+
+
+function showPasswordOnCheckbox() {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text"
+    }
+    else {
+        passwordInput.type = "password"
+    }
 }
 
 
@@ -328,7 +314,6 @@ const errorMessageLocation = document.querySelector(".error-message-wrapper")
 
 
 function validate_form(email, password, dict) {
-
     let foundData = false;
 
     for (let i = 0; i < dict.length; i++) {
@@ -360,13 +345,11 @@ function generateErrorMessage(firstMessage, secondMessage) {
 
     div.appendChild(p1)
     div.appendChild(p2)
-
-
 }
 
 
 
-
+// makes the cursor load for 5 seconds
 function loadMousePointer() {
     const body = document.querySelector("body");
 
@@ -377,9 +360,9 @@ function loadMousePointer() {
     }, 5000);
 }
 
-loadMousePointer()
 
 
+// Hides the login form and displays the main content
 function renderMainContent() {
     const loginContent = document.querySelector(".login-wrapper")
     loginContent.style.display = "none"
@@ -398,23 +381,110 @@ submitButton.addEventListener("click", function(e) {
 
 
 
-icon.addEventListener("click", (e) => {
-    if (icon.innerHTML === "visibility" && passwordInput.type === "password") {
-        icon.innerHTML = "visibility_off"
-        icon.style.opacity = 0.5
+// loading section logic
+const blinkingTitle = document.querySelector(".blink-title")
+
+function blinkFunction() {
+    blinkingTitle.style.display = "none"
+    setInterval(function() {
+        if (blinkingTitle.style.display === "none") {
+            blinkingTitle.style.display = "block"
+        }
+        else {
+            blinkingTitle.style.display = "none"
+        }
+
+    }, 500)
+    
+    blinkingTitle.style.display = "block"
+}
+
+blinkFunction()
+
+
+
+const displayDotsLocation = document.querySelector(".dots")
+
+
+function dots(element) {
+    element.innerHTML = ''
+    const dotsInterval = setInterval(function(e) {
+        element.innerHTML += '.'
+        if (element.innerHTML === '....') {
+            element.innerHTML = ''
+            clearInterval(dotsInterval)
+            setTimeout(dots(element), 166)
+        }
+    }, 166)
+
+}
+
+dots(displayDotsLocation)
+
+
+function loadingBar() {
+    const divLocation = document.querySelector(".progress-bar-inner")
+
+    const div = document.createElement("div")
+    div.classList.add("progress-square")
+
+    divLocation.appendChild(div)
+
+    console.log("div created")
+
+
+}
+
+let counter = 0
+
+let stopLoadingBarEvent = setInterval(function(e) {
+    loadingBar()
+    counter++
+
+    if (counter < 8) {
+        console.log("1000ms")
+    }
+    else if (counter < 16) {
+        console.log("3500ms")
     }
     else {
-        passwordInput.type = "password"
-        icon.style.opacity = 1
-        icon.innerHTML = "visibility"
+        console.log("1000ms")
     }
-})
+
+    if (counter === 20) {
+        clearInterval(stopLoadingBarEvent)
+        return
+        // TODO redirect to homepage
+    }
+
+    
+}, 100)
+
+
+// 5500ms ====> 100% ===> 20 blocks
+
+
+// 1st
+// 1000ms ====> 40% ===> 8 blocks
+
+// 2nd
+//  3500ms ====> 40% ===> 8 blocks
+
+// 3th
+// 1000ms ===> 20% ===> 4 blocks
+
+function burner(timeInterval, numberOfBlocks, stdPercentage=100) {
+    let percentageValue = "%"
+    setInterval(function(e) {
+
+    })
+
+    return percentageValue;
+}
 
 
 
 
 
-// let correctEmails = ['bells95@scicpkl.inc.us', 'johndoe@email.com']
-// let correctPasswords = ['feynman@sWxw8Ml', 'password1234'
 
 

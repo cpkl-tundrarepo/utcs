@@ -184,10 +184,7 @@ body {
 
 
 
-/* FAKE FORM STYLING */
-
-/* FONT FAMILY FOR THE LOGIN SECTION */
-/* font-family: 'Courier Prime', monospace; */
+/* FORM STYLING */
 
 .wrapper {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -312,6 +309,64 @@ footer > .footer-inner {
 
 .hidden.active {
     display: flex;
+}
+
+
+/* progress bar styling */
+.progress-bar-wrapper {
+    /* margin-top: 15rem; */
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+    color: #ffffff;
+}
+
+.blink-title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: lighter;
+    text-shadow: 3px 3px 4px rgba(0,0,0,1);
+    /* height: 100px; */
+    position: absolute;
+}
+
+.progress-bar {
+    width: 302px;
+    height: 18px;
+    border-radius: 4px;
+    background-color: #D9D9D9;
+    border: 1px solid #000000;
+    /**/
+    display: flex;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.progress-bar-inner {
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    gap: 2px;
+}
+
+.progress-square {
+    height: 12px;
+    width: 11px;
+    border: 0.5px solid #91adb4;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #009aff 0%, #b6e0ff 51.16%, #009aff 100%);
+}
+
+.percentage-wrapper {
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.external-data {
+    color: #9C9C9C;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    font-weight: lighter;
 }
 
 
