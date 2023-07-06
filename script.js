@@ -290,7 +290,7 @@ const correctLogins = [
 class Storage {
     // function that will return true if the user is logged
     static isLogged() {
-        
+
     }
 
     static logInUser(email, password, db) {
@@ -386,13 +386,7 @@ class LoadingInterface {
 
         blinkingTitle.style.display = "none"
         setInterval(function() {
-            if (blinkingTitle.style.display === "none") {
-                blinkingTitle.style.display = "block"
-            }
-            else {
-                blinkingTitle.style.display = "none"
-            }
-    
+            blinkingTitle.style.display = (blinkingTitle.style.display === "none") ? "block" : "none"
         }, 500)
         
         blinkingTitle.style.display = "block"
