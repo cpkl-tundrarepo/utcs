@@ -267,17 +267,9 @@ window.addEventListener('load', (event) => {
 });
 
 
-
-// LOGIN FUNCTIONS
-
-
-
-const icon = document.querySelector(".toggle-image")
-const passwordInput = document.querySelector(".password")
-const checkboxPassword = document.querySelector(".show-password")
-const emailInput = document.querySelector(".email");
-const submitButton = document.querySelector(".submit-button")
-
+// ############################################################################################
+// johnny walker said
+// ############################################################################################
 
 const correctLogins = [
     {
@@ -295,111 +287,131 @@ const correctLogins = [
 ]
 
 
-// events
-checkboxPassword.addEventListener("click", showPasswordOnCheckbox)
-
-
-function showPasswordOnCheckbox() {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text"
+class Storage {
+    // function that will return true if the user is logged
+    static isLogged() {
+        
     }
-    else {
-        passwordInput.type = "password"
-    }
-}
 
+    static logInUser(email, password, db) {
+        let foundData = false;
 
-const errorMessageLocation = document.querySelector(".error-message-wrapper")
-
-
-
-function validate_form(email, password, dict) {
-    let foundData = false;
-
-    for (let i = 0; i < dict.length; i++) {
-        if (email.value === dict[i].email && password.value === dict[i].password) {
-            foundData = true
+        for (let i = 0; i < db.length; i++) {
+            if (email.value === db[i].email && password.value === db[i].password) {
+                foundData = true
+            }
         }
-    }
 
-    if (!foundData) {
-        generateErrorMessage("Your credentials do not match our current employee database.  Make sure your email and password are both correct and try again.", "If the problem persists, contact your department's employee assistance center and request a new TACY access password.")
-    }
-    else {
-        console.log("Access Granted")
-        renderMainContent()
-    }
-}
-
-
-function generateErrorMessage(firstMessage, secondMessage) {
-    const div = document.createElement('div')
-    div.classList.add('message')
-    errorMessageLocation.appendChild(div)
-
-    const p1 = document.createElement("p")
-    p1.innerHTML = firstMessage
-
-    const p2 = document.createElement("p")
-    p2.innerHTML = secondMessage
-
-    div.appendChild(p1)
-    div.appendChild(p2)
-}
-
-
-
-// makes the cursor load for 5 seconds
-function loadMousePointer() {
-    const body = document.querySelector("body");
-
-    body.style.cursor = "wait";
-
-    setTimeout(function() {
-        body.style.cursor = "default";
-    }, 5000);
-}
-
-
-
-// Hides the login form and displays the main content
-function renderMainContent() {
-    const loginContent = document.querySelector(".login-wrapper")
-    loginContent.style.display = "none"
-
-    const mainContent = document.querySelector(".content")
-
-    mainContent.classList.add("active")
-}
-
-
-submitButton.addEventListener("click", function(e) {
-    e.preventDefault()
-    validate_form(emailInput, passwordInput, correctLogins)
+        if (!foundData) {
+            UserInterface.generateErrorMessage("Your credentials do not match our current employee database.  Make sure your email and password are both correct and try again.", "If the problem persists, contact your department's employee assistance center and request a new TACY access password.")
     
-})
-
-
-
-// loading section logic
-const blinkingTitle = document.querySelector(".blink-title")
-
-function blinkFunction() {
-    blinkingTitle.style.display = "none"
-    setInterval(function() {
-        if (blinkingTitle.style.display === "none") {
-            blinkingTitle.style.display = "block"
         }
         else {
-            blinkingTitle.style.display = "none"
+            console.log("Access Granted")
+            localStorage.setItem("isLoggedIn", true)
+            UserInterface.renderMainContent()
         }
 
-    }, 500)
-    
-    blinkingTitle.style.display = "block"
+
+    }
+
+    static logOutUser() {
+        return localStorage.removeItem("isLoggedIn")
+    }
 }
 
-blinkFunction()
+// handles changes on the screen
+class UserInterface {
+    static renderMainContent() {
+        const loginContent = document.querySelector(".login-wrapper")
+        const mainContent = document.querySelector(".content")
+        
+        loginContent.style.display = "none"
+        mainContent.classList.add("active")
+    }
+    
+    static renderLoginPage() {
+        const loginContent = document.querySelector(".login-wrapper")
+        const mainContent = document.querySelector(".content")
+        
+        loginContent.style.display = "block"
+        mainContent.classList.remove("active")
+    }
+
+    static showPasswordOnCheckbox() {
+        
+        passwordInput.type = (passwordInput.type === "password") ? "text" : "password";
+    }
+
+    static generateErrorMessage(firstMessage, secondMessage) {
+        const errorMessageLocation = document.querySelector(".error-message-wrapper")
+
+        // ensures that the error message does not duplicate
+        const existingErrorMessage = errorMessageLocation.querySelector(".message")
+
+        if (existingErrorMessage) {
+            errorMessageLocation.removeChild(existingErrorMessage)
+        }
+        
+        const div = document.createElement('div')
+        div.classList.add('message')
+        errorMessageLocation.appendChild(div)
+
+        const p1 = document.createElement("p")
+        p1.innerHTML = firstMessage
+
+        const p2 = document.createElement("p")
+        p2.innerHTML = secondMessage
+
+        div.appendChild(p1)
+        div.appendChild(p2)
+    }
+
+    static loadMousePointer() {
+        const body = document.querySelector("body");
+
+        body.style.cursor = "wait";
+
+        setTimeout(function() {
+            body.style.cursor = "default";
+        }, 5000);
+    }
+
+}
+
+
+class LoadingInterface {
+    static blinkDownloadMessage() {
+        const blinkingTitle = document.querySelector(".blink-title")
+
+        blinkingTitle.style.display = "none"
+        setInterval(function() {
+            if (blinkingTitle.style.display === "none") {
+                blinkingTitle.style.display = "block"
+            }
+            else {
+                blinkingTitle.style.display = "none"
+            }
+    
+        }, 500)
+        
+        blinkingTitle.style.display = "block"
+    }
+}
+
+
+// CODE REFACTORING ABOVE ^^^^^^^^^^^^
+
+const icon = document.querySelector(".toggle-image")
+const checkboxPassword = document.querySelector(".show-password")
+const emailInput = document.querySelector(".email");
+const submitButton = document.querySelector(".submit-button")
+
+const passwordInput = document.querySelector(".password")
+
+
+
+
 
 
 
@@ -419,7 +431,7 @@ function dots(element) {
 
 }
 
-dots(displayDotsLocation)
+// dots(displayDotsLocation)
 
 
 function loadingBar() {
@@ -527,11 +539,21 @@ class Percentage {
 }
 
 
-const firstPart = new Percentage(1000, percentageLocation, 0, 40)
-const secondPart = new Percentage(3500, percentageLocation, 40, 80)
-const thirdPart = new Percentage(1500, percentageLocation, 80, 100)
+// const firstPart = new Percentage(1000, percentageLocation, 0, 40)
+// const secondPart = new Percentage(3500, percentageLocation, 40, 80)
+//  const thirdPart = new Percentage(1500, percentageLocation, 80, 100)
 
 
 
 
 
+// EVENTS
+
+// show password functionality
+checkboxPassword.addEventListener("click", UserInterface.showPasswordOnCheckbox)
+
+// validates the user input
+submitButton.addEventListener("click", function(e) {
+    e.preventDefault()
+    Storage.logInUser(emailInput, passwordInput, correctLogins)
+})
