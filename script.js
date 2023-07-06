@@ -441,15 +441,15 @@ let stopLoadingBarEvent = setInterval(function(e) {
     loadingBar()
     counter++
 
-    if (counter < 8) {
-        console.log("1000ms")
-    }
-    else if (counter < 16) {
-        console.log("3500ms")
-    }
-    else {
-        console.log("1000ms")
-    }
+    // if (counter < 8) {
+    //     console.log("1000ms")
+    // }
+    // else if (counter < 16) {
+    //     console.log("3500ms")
+    // }
+    // else {
+    //     console.log("1000ms")
+    // }
 
     if (counter === 20) {
         clearInterval(stopLoadingBarEvent)
@@ -461,6 +461,7 @@ let stopLoadingBarEvent = setInterval(function(e) {
 }, 100)
 
 
+// ###########################################
 // 5500ms ====> 100% ===> 20 blocks
 
 
@@ -473,16 +474,62 @@ let stopLoadingBarEvent = setInterval(function(e) {
 // 3th
 // 1000ms ===> 20% ===> 4 blocks
 
-function burner(timeInterval, numberOfBlocks, stdPercentage=100) {
-    let percentageValue = "%"
-    setInterval(function(e) {
 
-    })
+// function burner(timeInterval, numberOfBlocks, stdPercentage=100) {
+//     let percentageValue = "%"
+//     setInterval(function(e) {
+    
+    //     })
+    
+    //     return percentageValue;
+    // }
+    
+// ###########################################
 
-    return percentageValue;
+const percentageLocation = document.querySelector(".percentage-value")
+
+
+
+// const demo = setInterval(function(e) {
+//     percentageValue++
+
+//     percentageLocation.innerText = `${percentageValue}%`
+
+//     if (percentageValue == 100) {
+//         clearInterval(demo)
+//     }
+// }, speed)
+
+
+function firstPart(speed, percentage) {
+    const firstPartInterval = setInterval(function(e) {
+        percentageValue++
+
+        percentage.innerText = `${percentageValue}%`
+    }, speed)
 }
 
 
+class Percentage {
+    constructor(speed, percentageLocation, initialPercentage, finalPercentage) {
+        this.speed = speed
+        this.percentageLocation = percentageLocation
+        this.initialPercentage = initialPercentage
+        this.finalPercentage = finalPercentage
+    }
+
+
+    static timeSpanOne () {
+
+    }
+
+
+}
+
+
+const firstPart = new Percentage(1000, percentageLocation, 0, 40)
+const secondPart = new Percentage(3500, percentageLocation, 40, 80)
+const thirdPart = new Percentage(1500, percentageLocation, 80, 100)
 
 
 
