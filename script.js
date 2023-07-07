@@ -271,6 +271,10 @@ window.addEventListener('load', (event) => {
 // johnny walker said
 // ############################################################################################
 
+// global variables
+const displayDotsLocation = document.querySelector(".dots")
+
+
 const correctLogins = [
     {
         email: 'bells95@scicpkl.inc.us',
@@ -288,9 +292,10 @@ const correctLogins = [
 
 
 class Storage {
-    // function that will return true if the user is logged
+    // returns true if the user is logged
     static isLogged() {
-
+        const isLoggedIn = localStorage.getItem("isLoggedIn")
+        return isLoggedIn === "true";
     }
 
     static logInUser(email, password, db) {
@@ -311,14 +316,14 @@ class Storage {
             localStorage.setItem("isLoggedIn", true)
             UserInterface.renderMainContent()
         }
-
-
     }
 
     static logOutUser() {
         return localStorage.removeItem("isLoggedIn")
+        UserInterface.renderLoginPage()
     }
 }
+
 
 // handles changes on the screen
 class UserInterface {
@@ -381,6 +386,7 @@ class UserInterface {
 
 
 class LoadingInterface {
+    // TODO - calls these methods when the loading section is presented
     static blinkDownloadMessage() {
         const blinkingTitle = document.querySelector(".blink-title")
 
@@ -391,12 +397,24 @@ class LoadingInterface {
         
         blinkingTitle.style.display = "block"
     }
+
+    static infiniteDotsLoop(element) {
+
+        element.innerHTML = ''
+        const dotsInterval = setInterval(function(e) {
+            element.innerHTML += '.'
+            if (element.innerHTML === '....') {
+                element.innerHTML = ''
+                clearInterval(dotsInterval)
+                setTimeout(dots(element), 166)
+            }
+        }, 166)
+    }
 }
 
 
 // CODE REFACTORING ABOVE ^^^^^^^^^^^^
 
-const icon = document.querySelector(".toggle-image")
 const checkboxPassword = document.querySelector(".show-password")
 const emailInput = document.querySelector(".email");
 const submitButton = document.querySelector(".submit-button")
@@ -404,28 +422,6 @@ const submitButton = document.querySelector(".submit-button")
 const passwordInput = document.querySelector(".password")
 
 
-
-
-
-
-
-const displayDotsLocation = document.querySelector(".dots")
-
-
-function dots(element) {
-    element.innerHTML = ''
-    const dotsInterval = setInterval(function(e) {
-        element.innerHTML += '.'
-        if (element.innerHTML === '....') {
-            element.innerHTML = ''
-            clearInterval(dotsInterval)
-            setTimeout(dots(element), 166)
-        }
-    }, 166)
-
-}
-
-// dots(displayDotsLocation)
 
 
 function loadingBar() {
@@ -507,38 +503,16 @@ const percentageLocation = document.querySelector(".percentage-value")
 // }, speed)
 
 
-function firstPart(speed, percentage) {
-    const firstPartInterval = setInterval(function(e) {
-        percentageValue++
 
-        percentage.innerText = `${percentageValue}%`
-    }, speed)
-}
+// ############
 
-
-class Percentage {
-    constructor(speed, percentageLocation, initialPercentage, finalPercentage) {
-        this.speed = speed
-        this.percentageLocation = percentageLocation
-        this.initialPercentage = initialPercentage
-        this.finalPercentage = finalPercentage
+window.addEventListener("DOMContentLoaded", function() {
+    if (Storage.isLogged()) {
+        UserInterface.renderMainContent()
+    } else {
+        UserInterface.renderLoginPage()
     }
-
-
-    static timeSpanOne () {
-
-    }
-
-
-}
-
-
-// const firstPart = new Percentage(1000, percentageLocation, 0, 40)
-// const secondPart = new Percentage(3500, percentageLocation, 40, 80)
-//  const thirdPart = new Percentage(1500, percentageLocation, 80, 100)
-
-
-
+})
 
 
 // EVENTS
