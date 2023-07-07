@@ -13,11 +13,13 @@ body {
 }
 
 .box {
+    margin: 5px;
     display: flex;
 }
 
 .square {
-    margin: 10px;
+    margin: 15px;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.84);
     /*padding: 10px;
     background-color: #373737;
     border: 1mm #373737;
@@ -28,7 +30,7 @@ body {
 
 #leftthing {
     display: flex;
-    max-width: 40em;
+    max-width: 35em;
 }
 
 #tree {
@@ -36,6 +38,7 @@ body {
     margin-top: 5px;
     padding: 5px;
     /*max-width: 30em;*/
+    border: 2px solid #69737d;
     background-color: #101010;
 }
 
@@ -95,13 +98,16 @@ body {
 }
 
 .top_bar {
-    padding-top: 10px;
+    padding-top: 5px;
     /* background: linear-gradient(to bottom, #001a64 20%, #00397d 20% 80%); */
     background: rgb(125,162,187);
-background: linear-gradient(274deg, rgba(125,162,187,1) 28%, rgba(53,61,138,1) 100%);
+    background: linear-gradient(274deg, rgba(125,162,187,1) 28%, rgba(53,61,138,1) 100%);
+    border-bottom: 5px outset #1C6EA4;
+    border-top: 3px outset #1C6EA4;
     box-shadow: 0 1px 0 0 rgba(0,0,0,0.7675);
     width: 100%;
     font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 2px rgba(0,0,0,1);
     color: white;
     display: flex;
     align-items: center;
@@ -109,7 +115,7 @@ background: linear-gradient(274deg, rgba(125,162,187,1) 28%, rgba(53,61,138,1) 1
 
 #title {
     font-size: 32px;
-    margin: 5px;
+    margin: 10px;
 }
 
 #files {
@@ -122,10 +128,13 @@ background: linear-gradient(274deg, rgba(125,162,187,1) 28%, rgba(53,61,138,1) 1
 
 #query_result {
     background-color: #101010;
+    margin-left: 6px;
+    overflow: hidden;
 }
 
 #search_id {
     margin-top: 5px;
+    font-family: 'Courier New', Courier, monospace;
     background-color: #69737d;
     border: 2px solid black;
     padding: 3px;
@@ -166,7 +175,7 @@ background: linear-gradient(274deg, rgba(125,162,187,1) 28%, rgba(53,61,138,1) 1
 */
 
 .icon {
-    margin-right: 3px;
+    margin-right: 5px;
 }
 
 .super {
