@@ -274,6 +274,7 @@ window.addEventListener('load', (event) => {
 // global variables
 const displayDotsLocation = document.querySelector(".dots")
 
+
 // since there is no database 
 const correctLogins = [
     {
@@ -287,15 +288,17 @@ const correctLogins = [
     {
         email: 'kudy',
         password: '123'
-    }
+    },
 ]
 
+// const loginPage = document.querySelector(".login-wrapper")
+// loginPage.classList.remove("hidden")
 
 class Storage {
     // returns true if the user is logged
     static isLogged() {
-        const isLoggedIn = localStorage.getItem("isLoggedIn")
-        return isLoggedIn === "true";
+        // const isLoggedIn = localStorage.getItem("isLoggedIn")
+        // return isLoggedIn === "true";
     }
 
     static logInUser(email, password, db) {
@@ -313,15 +316,15 @@ class Storage {
         }
         else {
             console.log("Access Granted")
-            localStorage.setItem("isLoggedIn", true)
-            LoadingInterface.renderLoadingPage()
+            // localStorage.setItem("isLoggedIn", true)
+            UserInterface.renderMainContent()
             // UserInterface.renderMainContent()
         }
     }
 
     static logOutUser() {
-        return localStorage.removeItem("isLoggedIn")
-        UserInterface.renderLoginPage()
+        // return localStorage.removeItem("isLoggedIn")
+        // UserInterface.renderLoginPage()
     }
 }
 
@@ -331,9 +334,13 @@ class UserInterface {
     static renderMainContent() {
         const loginContent = document.querySelector(".login-wrapper")
         const mainContent = document.querySelector(".content")
-        
+        const progressBarWrapper = document.querySelector(".progress-bar-wrapper")
+
+
+
+        progressBarWrapper.classList.add("hidden")
         loginContent.style.display = "none"
-        mainContent.classList.add("active")
+        mainContent.classList.remove("hidden")
     }
     
     static renderLoginPage() {
@@ -386,72 +393,90 @@ class UserInterface {
 }
 
 
-class LoadingInterface {
-    // TODO - calls these methods when the loading section is presented
-    static renderLoadingPage() {
-        const loginPage = document.querySelector(".login-wrapper")
-        const loadingPage = document.querySelector(".progress-bar-wrapper")
-        loadingPage.classList.remove("hidden")
-        loginPage.style.display = "none"
+// class LoadingInterface {
+//     // TODO - calls these methods when the loading section is presented
+//     static renderLoadingPage() {
+//         const loginPage = document.querySelector(".login-wrapper")
+//         const loadingPage = document.querySelector(".progress-bar-wrapper")
+//         loadingPage.classList.remove("hidden")
+        
+//         loginPage.classList.add("hidden")
+//         loginPage.style.display = "none"
 
-        LoadingInterface.loadingBar()
-        LoadingInterface.blinkDownloadMessage()
-        LoadingInterface.infiniteDotsLoop(displayDotsLocation)
-        UserInterface.loadMousePointer()
-    }
+//         LoadingInterface.blinkDownloadMessage()
+//         LoadingInterface.infiniteDotsLoop(displayDotsLocation)
+//         UserInterface.loadMousePointer()    
 
-    static loadingBar(isLoaded) {
-        const divLocation = document.querySelector(".progress-bar-inner")
+//         let counter = 0
 
-        const div = document.createElement("div")
-        div.classList.add("progress-square")
+//         let loadingInterval = setInterval(function(e) {
+//             LoadingInterface.loadingBar()
+//             counter++
+//             console.log(counter)
+//             if (counter === 20) {
+//                 clearInterval(loadingInterval)
+//                 console.log("main page rendered")
+//                 UserInterface.renderMainContent()
+//             }
+
+//         }, 370)
+//     }
+
+//     static loadingBar(isLoaded) {
+//         const divLocation = document.querySelector(".progress-bar-inner")
+
+//         const div = document.createElement("div")
+//         div.classList.add("progress-square")
     
-        divLocation.appendChild(div)
+//         divLocation.appendChild(div)
         
 
-        // LoadingInterface.loadingBarInterval()
-    }
+//         // LoadingInterface.loadingBarInterval()
+//     }
 
-    static blinkDownloadMessage() {
-        const blinkingTitle = document.querySelector(".blink-title")
+//     static blinkDownloadMessage() {
+//         const blinkingTitle = document.querySelector(".blink-title")
 
-        blinkingTitle.style.display = "none"
-        setInterval(function() {
-            blinkingTitle.style.display = (blinkingTitle.style.display === "none") ? "block" : "none"
-        }, 500)
+//         blinkingTitle.style.display = "none"
+//         setInterval(function() {
+//             blinkingTitle.style.display = (blinkingTitle.style.display === "none") ? "block" : "none"
+//         }, 500)
         
-        blinkingTitle.style.display = "block"
-    }
+//         blinkingTitle.style.display = "block"
+//     }
 
-    static infiniteDotsLoop(element) {
+//     static infiniteDotsLoop(element) {
 
-        element.innerHTML = ''
-        const dotsInterval = setInterval(function(e) {
-            element.innerHTML += '.'
-            if (element.innerHTML === '....') {
-                element.innerHTML = ''
-                clearInterval(dotsInterval)
-                setTimeout(LoadingInterface.infiniteDotsLoop(element), 166)
-            }
-        }, 166)
-    }
+//         element.innerHTML = ''
+//         const dotsInterval = setInterval(function(e) {
+//             element.innerHTML += '.'
+//             if (element.innerHTML === '....') {
+//                 element.innerHTML = ''
+//                 clearInterval(dotsInterval)
+//                 setTimeout(LoadingInterface.infiniteDotsLoop(element), 166)
+//             }
+//         }, 166)
+//     }
 
-    static loadingBarInterval() {
-        let counter = 0
+    // FIX FUNCTION
 
-        let stopLoadingBarEvent = setInterval(function(e) {
-            LoadingInterface.loadingBar()
-            counter++
-            console.log(counter)
-            if (counter === 20) {
-                clearInterval(stopLoadingBarEvent)
-            }
+    // static loadingBarInterval() {
+    //     let counter = 0
 
-        }, 1000)  
-    }
-}
+    //     let stopLoadingBarEvent = setInterval(function(e) {
+    //         LoadingInterface.loadingBar()
+    //         counter++
+    //         console.log(counter)
+    //         if (counter === 20) {
+    //             clearInterval(stopLoadingBarEvent)
+    //             UserInterface.renderMainContent()
+    //         }
 
-console.log(LoadingInterface.renderLoadingPage())
+    //     }, 1000)  
+    // }
+// }
+
+// console.log(LoadingInterface.renderLoadingPage())
 
 // CODE REFACTORING ABOVE ^^^^^^^^^^^^
 
@@ -462,68 +487,22 @@ const passwordInput = document.querySelector(".password")
 
 
 
-// let stopLoadingBarEvent = setInterval(function(e) {
-//     LoadingInterface.loadingBar()
-//     counter++
-
-//     if (counter < 8) {
-//         console.log("1000ms")
-//     }
-//     else if (counter < 16) {
-//         console.log("3500ms")
-//     }
-//     else {
-//         console.log("1000ms")
-//     }
-
-//     if (counter === 20) {
-//         clearInterval(stopLoadingBarEvent)
-//         return
-//         // TODO redirect to homepage
-//     }
-
-    
-// }, 100)
-
-
-// ###########################################
-// 5500ms ====> 100% ===> 20 blocks
-
-
-// 1st
-// 1000ms ====> 40% ===> 8 blocks
-
-// 2nd
-//  3500ms ====> 40% ===> 8 blocks
-
-// 3th
-// 1000ms ===> 20% ===> 4 blocks
-
-
-// function burner(timeInterval, numberOfBlocks, stdPercentage=100) {
-//     let percentageValue = "%"
-//     setInterval(function(e) {
-    
-    //     })
-    
-    //     return percentageValue;
-    // }
-    
-// ###########################################
-
 
 
 
 const percentageLocation = document.querySelector(".percentage-value")
-// const demo = setInterval(function(e) {
-//     percentageValue++
 
-//     percentageLocation.innerText = `${percentageValue}%`
+let percentageValue = 0
 
-//     if (percentageValue == 100) {
-//         clearInterval(demo)
-//     }
-// }, speed)
+const demo = setInterval(function(e) {
+    percentageValue++
+
+    percentageLocation.innerText = `${percentageValue}%`
+
+    if (percentageValue == 100) {
+        clearInterval(demo)
+    }
+}, 74)
 
 
 

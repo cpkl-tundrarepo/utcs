@@ -96,10 +96,12 @@ body {
 
 .top_bar {
     padding-top: 10px;
-    background: linear-gradient(to bottom, #001a64 20%, #00397d 20% 80%);
+    /* background: linear-gradient(to bottom, #001a64 20%, #00397d 20% 80%); */
+    background: rgb(125,162,187);
+background: linear-gradient(274deg, rgba(125,162,187,1) 28%, rgba(53,61,138,1) 100%);
     box-shadow: 0 1px 0 0 rgba(0,0,0,0.7675);
     width: 100%;
-    font-family: "Jost",sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     color: white;
     display: flex;
     align-items: center;
