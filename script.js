@@ -274,7 +274,7 @@ window.addEventListener('load', (event) => {
 // global variables
 const displayDotsLocation = document.querySelector(".dots")
 
-
+// since there is no database 
 const correctLogins = [
     {
         email: 'bells95@scicpkl.inc.us',
@@ -314,7 +314,8 @@ class Storage {
         else {
             console.log("Access Granted")
             localStorage.setItem("isLoggedIn", true)
-            UserInterface.renderMainContent()
+            LoadingInterface.renderLoadingPage()
+            // UserInterface.renderMainContent()
         }
     }
 
@@ -387,6 +388,30 @@ class UserInterface {
 
 class LoadingInterface {
     // TODO - calls these methods when the loading section is presented
+    static renderLoadingPage() {
+        const loginPage = document.querySelector(".login-wrapper")
+        const loadingPage = document.querySelector(".progress-bar-wrapper")
+        loadingPage.classList.remove("hidden")
+        loginPage.style.display = "none"
+
+        LoadingInterface.loadingBar()
+        LoadingInterface.blinkDownloadMessage()
+        LoadingInterface.infiniteDotsLoop(displayDotsLocation)
+        UserInterface.loadMousePointer()
+    }
+
+    static loadingBar(isLoaded) {
+        const divLocation = document.querySelector(".progress-bar-inner")
+
+        const div = document.createElement("div")
+        div.classList.add("progress-square")
+    
+        divLocation.appendChild(div)
+        
+
+        // LoadingInterface.loadingBarInterval()
+    }
+
     static blinkDownloadMessage() {
         const blinkingTitle = document.querySelector(".blink-title")
 
@@ -406,61 +431,59 @@ class LoadingInterface {
             if (element.innerHTML === '....') {
                 element.innerHTML = ''
                 clearInterval(dotsInterval)
-                setTimeout(dots(element), 166)
+                setTimeout(LoadingInterface.infiniteDotsLoop(element), 166)
             }
         }, 166)
     }
+
+    static loadingBarInterval() {
+        let counter = 0
+
+        let stopLoadingBarEvent = setInterval(function(e) {
+            LoadingInterface.loadingBar()
+            counter++
+            console.log(counter)
+            if (counter === 20) {
+                clearInterval(stopLoadingBarEvent)
+            }
+
+        }, 1000)  
+    }
 }
 
+console.log(LoadingInterface.renderLoadingPage())
 
 // CODE REFACTORING ABOVE ^^^^^^^^^^^^
 
 const checkboxPassword = document.querySelector(".show-password")
 const emailInput = document.querySelector(".email");
 const submitButton = document.querySelector(".submit-button")
-
 const passwordInput = document.querySelector(".password")
 
 
 
+// let stopLoadingBarEvent = setInterval(function(e) {
+//     LoadingInterface.loadingBar()
+//     counter++
 
-function loadingBar() {
-    const divLocation = document.querySelector(".progress-bar-inner")
+//     if (counter < 8) {
+//         console.log("1000ms")
+//     }
+//     else if (counter < 16) {
+//         console.log("3500ms")
+//     }
+//     else {
+//         console.log("1000ms")
+//     }
 
-    const div = document.createElement("div")
-    div.classList.add("progress-square")
-
-    divLocation.appendChild(div)
-
-    console.log("div created")
-
-
-}
-
-let counter = 0
-
-let stopLoadingBarEvent = setInterval(function(e) {
-    loadingBar()
-    counter++
-
-    // if (counter < 8) {
-    //     console.log("1000ms")
-    // }
-    // else if (counter < 16) {
-    //     console.log("3500ms")
-    // }
-    // else {
-    //     console.log("1000ms")
-    // }
-
-    if (counter === 20) {
-        clearInterval(stopLoadingBarEvent)
-        return
-        // TODO redirect to homepage
-    }
+//     if (counter === 20) {
+//         clearInterval(stopLoadingBarEvent)
+//         return
+//         // TODO redirect to homepage
+//     }
 
     
-}, 100)
+// }, 100)
 
 
 // ###########################################
@@ -488,10 +511,10 @@ let stopLoadingBarEvent = setInterval(function(e) {
     
 // ###########################################
 
+
+
+
 const percentageLocation = document.querySelector(".percentage-value")
-
-
-
 // const demo = setInterval(function(e) {
 //     percentageValue++
 
@@ -504,15 +527,6 @@ const percentageLocation = document.querySelector(".percentage-value")
 
 
 
-// ############
-
-window.addEventListener("DOMContentLoaded", function() {
-    if (Storage.isLogged()) {
-        UserInterface.renderMainContent()
-    } else {
-        UserInterface.renderLoginPage()
-    }
-})
 
 
 // EVENTS
@@ -525,3 +539,12 @@ submitButton.addEventListener("click", function(e) {
     e.preventDefault()
     Storage.logInUser(emailInput, passwordInput, correctLogins)
 })
+
+
+// window.addEventListener("DOMContentLoaded", function() {
+//     if (Storage.isLogged()) {
+//         UserInterface.renderMainContent()
+//     } else {
+//         UserInterface.renderLoginPage()
+//     }
+// })
