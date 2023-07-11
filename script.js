@@ -291,14 +291,12 @@ const correctLogins = [
     },
 ]
 
-// const loginPage = document.querySelector(".login-wrapper")
-// loginPage.classList.remove("hidden")
 
 class Storage {
     // returns true if the user is logged
     static isLogged() {
-        // const isLoggedIn = localStorage.getItem("isLoggedIn")
-        // return isLoggedIn === "true";
+        const isLoggedIn = localStorage.getItem("isLoggedIn")
+        return isLoggedIn === "true";
     }
 
     static logInUser(email, password, db) {
@@ -316,15 +314,14 @@ class Storage {
         }
         else {
             console.log("Access Granted")
-            // localStorage.setItem("isLoggedIn", true)
-            UserInterface.renderMainContent()
-            // UserInterface.renderMainContent()
+            localStorage.setItem("isLoggedIn", true)
+            LoadingInterface.renderLoadingPage()
         }
     }
 
     static logOutUser() {
-        // return localStorage.removeItem("isLoggedIn")
-        // UserInterface.renderLoginPage()
+        return localStorage.removeItem("isLoggedIn")
+        UserInterface.renderLoginPage()
     }
 }
 
@@ -393,88 +390,105 @@ class UserInterface {
 }
 
 
-// class LoadingInterface {
-//     // TODO - calls these methods when the loading section is presented
-//     static renderLoadingPage() {
-//         const loginPage = document.querySelector(".login-wrapper")
-//         const loadingPage = document.querySelector(".progress-bar-wrapper")
-//         loadingPage.classList.remove("hidden")
+class LoadingInterface {
+    // TODO - calls these methods when the loading section is presented
+    static renderLoadingPage() {
+        const loginPage = document.querySelector(".login-wrapper")
+        const loadingPage = document.querySelector(".progress-bar-wrapper")
+        loadingPage.classList.remove("hidden")
         
-//         loginPage.classList.add("hidden")
-//         loginPage.style.display = "none"
+        loginPage.classList.add("hidden")
+        loginPage.style.display = "none"
 
-//         LoadingInterface.blinkDownloadMessage()
-//         LoadingInterface.infiniteDotsLoop(displayDotsLocation)
-//         UserInterface.loadMousePointer()    
+        LoadingInterface.blinkDownloadMessage()
+        LoadingInterface.infiniteDotsLoop(displayDotsLocation)
+        UserInterface.loadMousePointer()
+        LoadingInterface.percentageFeature()
 
-//         let counter = 0
+        let counter = 0
 
-//         let loadingInterval = setInterval(function(e) {
-//             LoadingInterface.loadingBar()
-//             counter++
-//             console.log(counter)
-//             if (counter === 20) {
-//                 clearInterval(loadingInterval)
-//                 console.log("main page rendered")
-//                 UserInterface.renderMainContent()
-//             }
+        let loadingInterval = setInterval(function(e) {
+            LoadingInterface.loadingBar()
+            counter++
+            console.log(counter)
+            if (counter === 20) {
+                clearInterval(loadingInterval)
+                console.log("main page rendered")
+                UserInterface.renderMainContent()
+            }
 
-//         }, 370)
-//     }
+        }, 370)
+    }
 
-//     static loadingBar(isLoaded) {
-//         const divLocation = document.querySelector(".progress-bar-inner")
+    static loadingBar(isLoaded) {
+        const divLocation = document.querySelector(".progress-bar-inner")
 
-//         const div = document.createElement("div")
-//         div.classList.add("progress-square")
+        const div = document.createElement("div")
+        div.classList.add("progress-square")
     
-//         divLocation.appendChild(div)
+        divLocation.appendChild(div)
         
 
-//         // LoadingInterface.loadingBarInterval()
-//     }
+        // LoadingInterface.loadingBarInterval()
+    }
 
-//     static blinkDownloadMessage() {
-//         const blinkingTitle = document.querySelector(".blink-title")
+    static blinkDownloadMessage() {
+        const blinkingTitle = document.querySelector(".blink-title")
 
-//         blinkingTitle.style.display = "none"
-//         setInterval(function() {
-//             blinkingTitle.style.display = (blinkingTitle.style.display === "none") ? "block" : "none"
-//         }, 500)
+        blinkingTitle.style.display = "none"
+        setInterval(function() {
+            blinkingTitle.style.display = (blinkingTitle.style.display === "none") ? "block" : "none"
+        }, 500)
         
-//         blinkingTitle.style.display = "block"
-//     }
+        blinkingTitle.style.display = "block"
+    }
 
-//     static infiniteDotsLoop(element) {
+    static infiniteDotsLoop(element) {
 
-//         element.innerHTML = ''
-//         const dotsInterval = setInterval(function(e) {
-//             element.innerHTML += '.'
-//             if (element.innerHTML === '....') {
-//                 element.innerHTML = ''
-//                 clearInterval(dotsInterval)
-//                 setTimeout(LoadingInterface.infiniteDotsLoop(element), 166)
-//             }
-//         }, 166)
-//     }
+        element.innerHTML = ''
+        const dotsInterval = setInterval(function(e) {
+            element.innerHTML += '.'
+            if (element.innerHTML === '....') {
+                element.innerHTML = ''
+                clearInterval(dotsInterval)
+                setTimeout(LoadingInterface.infiniteDotsLoop(element), 166)
+            }
+        }, 166)
+    }
 
     // FIX FUNCTION
 
-    // static loadingBarInterval() {
-    //     let counter = 0
+    static loadingBarInterval() {
+        let counter = 0
 
-    //     let stopLoadingBarEvent = setInterval(function(e) {
-    //         LoadingInterface.loadingBar()
-    //         counter++
-    //         console.log(counter)
-    //         if (counter === 20) {
-    //             clearInterval(stopLoadingBarEvent)
-    //             UserInterface.renderMainContent()
-    //         }
+        let stopLoadingBarEvent = setInterval(function(e) {
+            LoadingInterface.loadingBar()
+            counter++
+            console.log(counter)
+            if (counter === 20) {
+                clearInterval(stopLoadingBarEvent)
+                UserInterface.renderMainContent()
+            }
 
-    //     }, 1000)  
-    // }
-// }
+        }, 1000)  
+    }
+
+    static percentageFeature()  {
+        const percentageLocation = document.querySelector(".percentage-value")
+
+        let percentageValue = 0
+
+        const demo = setInterval(function(e) {
+            percentageValue++
+
+            percentageLocation.innerText = `${percentageValue}%`
+
+            if (percentageValue == 100) {
+                clearInterval(demo)
+            }
+        }, 74)
+    }
+}
 
 // console.log(LoadingInterface.renderLoadingPage())
 
@@ -484,25 +498,6 @@ const checkboxPassword = document.querySelector(".show-password")
 const emailInput = document.querySelector(".email");
 const submitButton = document.querySelector(".submit-button")
 const passwordInput = document.querySelector(".password")
-
-
-
-
-
-
-const percentageLocation = document.querySelector(".percentage-value")
-
-let percentageValue = 0
-
-const demo = setInterval(function(e) {
-    percentageValue++
-
-    percentageLocation.innerText = `${percentageValue}%`
-
-    if (percentageValue == 100) {
-        clearInterval(demo)
-    }
-}, 74)
 
 
 
@@ -520,10 +515,10 @@ submitButton.addEventListener("click", function(e) {
 })
 
 
-// window.addEventListener("DOMContentLoaded", function() {
-//     if (Storage.isLogged()) {
-//         UserInterface.renderMainContent()
-//     } else {
-//         UserInterface.renderLoginPage()
-//     }
-// })
+window.addEventListener("DOMContentLoaded", function() {
+    if (Storage.isLogged()) {
+        UserInterface.renderMainContent()
+    } else {
+        UserInterface.renderLoginPage()
+    }
+})
