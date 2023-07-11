@@ -333,8 +333,6 @@ class UserInterface {
         const mainContent = document.querySelector(".content")
         const progressBarWrapper = document.querySelector(".progress-bar-wrapper")
 
-
-
         progressBarWrapper.classList.add("hidden")
         loginContent.style.display = "none"
         mainContent.classList.remove("hidden")
@@ -349,7 +347,6 @@ class UserInterface {
     }
 
     static showPasswordOnCheckbox() {
-        
         passwordInput.type = (passwordInput.type === "password") ? "text" : "password";
     }
 
@@ -420,16 +417,13 @@ class LoadingInterface {
         }, 370)
     }
 
-    static loadingBar(isLoaded) {
+    static loadingBar() {
         const divLocation = document.querySelector(".progress-bar-inner")
-
         const div = document.createElement("div")
+        
         div.classList.add("progress-square")
-    
         divLocation.appendChild(div)
         
-
-        // LoadingInterface.loadingBarInterval()
     }
 
     static blinkDownloadMessage() {
@@ -488,6 +482,55 @@ class LoadingInterface {
             }
         }, 74)
     }
+
+    // ###############################
+    // TODO implement loading bar feature
+    // ###############################
+
+    // static startLoading() {
+    //     let bar = document.querySelector(".progress-bar-inner")
+    //     let percentageText = document.querySelector(".percentage-value")
+
+    // let loadingTimes = [
+    //     { percentage: 20, duration: 3500, blocks: 4 },
+    //     { percentage: 40, duration: 2000, blocks: 4 },
+    //     { percentage: 60, duration: 4000, blocks: 4 },
+    //     { percentage: 100, duration: 1000, blocks: 8},
+    //   ];
+
+        
+    //       let currentPercentage = 0
+
+    //       function updateLoadingBar() {
+    //       var loadingTime = loadingTimes.find(function (time) {
+    //         return currentPercentage < time.percentage;
+    //       });
+    
+    //       if (loadingTime) {
+    //         var increment = (loadingTime.percentage - currentPercentage) / 20;
+    //         var duration = loadingTime.duration / 20;
+    
+    //         var interval = setInterval(function () {
+    //           currentPercentage += increment;
+    //           bar.style.width = currentPercentage + '%';
+    //           percentageText.textContent = Math.round(currentPercentage) + '%';
+    
+    //           if (currentPercentage >= loadingTime.percentage) {
+    //             clearInterval(interval);
+    //             updateLoadingBar();
+    //           }
+    //         }, duration);
+    //       }
+    //     }
+    
+    //     updateLoadingBar();
+    //   }
+    
+    //   // Call startLoading function to begin the loading process
+    //   startLoading();
+
+        // }
+
 }
 
 // console.log(LoadingInterface.renderLoadingPage())
