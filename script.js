@@ -271,6 +271,9 @@ window.addEventListener('load', (event) => {
 // johnny walker said
 // ############################################################################################
 
+// 0-7167-0344-0 DATABASE ID
+
+
 // global variables
 const displayDotsLocation = document.querySelector(".dots")
 
