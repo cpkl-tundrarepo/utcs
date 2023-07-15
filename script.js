@@ -561,10 +561,10 @@ submitButton.addEventListener("click", function (e) {
   Storage.logInUser(emailInput, passwordInput, correctLogins);
 });
 
-// window.addEventListener("DOMContentLoaded", function() {
-//     if (Storage.isLogged()) {
-//         UserInterface.renderMainContent()
-//     } else {
-//         UserInterface.renderLoginPage()
-//     }
-// })
+window.addEventListener("DOMContentLoaded", function () {
+  if (Storage.isLogged()) {
+    UserInterface.renderMainContent();
+  } else {
+    UserInterface.renderLoginPage();
+  }
+});
