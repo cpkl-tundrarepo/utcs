@@ -1,0 +1,40 @@
+{
+    "subelements": {
+        "1842": {
+            "subelements": {
+                "1.jpg": {
+                    "author": "bells95",
+                    "title": "Expedition 191.1842-1",
+                    "type": "image"
+                },
+                "2.jpg": {
+                    "title": "Expedition 191.1842-2",
+                    "type": "image"
+                }
+            },
+            "title": "Copper Cal and, of course, Lis",
+            "type": "document"
+        },
+        "1843": {
+            "subelements": {
+                "nuclear-photo.jpg": {
+                    "title": "Expedition 191.1843-1",
+                    "type": "image"
+                }
+            },
+            "title": "SLM.1843 Site",
+            "type": "document"
+        },
+        "azarashi": {
+            "subelements": {
+                "state": {
+                    "subelements": {},
+                    "title": "Facts",
+                    "type": "sucker"
+                }
+            },
+            "title": "North Pole Expedition",
+            "type": "directory"
+        }
+    }
+}

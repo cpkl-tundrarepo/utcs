@@ -1,0 +1,22 @@
+{
+  "subelements": {
+    "root": {
+      "type": "directory",
+      "description": "Where everything is.",
+      "subelements": {
+        "hello": {
+          "type": "directory",
+          "subelements": {
+              "hello2": {
+                  "type": "file"
+              }
+          }
+        }
+      }
+    },
+    "helloweioghjaweriogjaweoigjioawejgo4iawejgoiawsejgoiajwiogjaweoij": {
+      "type": "directory"
+    }
+  }
+}
+
